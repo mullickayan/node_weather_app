@@ -10,11 +10,9 @@ const currentWeather = (address, callback) => {
             callback('Incorrect location passed to API', undefined)
         } else {
             callback(undefined, {
-                location: body.location.name,
-                current: 'It is ' + body.current.weather_descriptions[0] + ' now. Current temparature is ' + body.current.temperature + ' & it feels like '+ body.current.feelslike
-                // temperature: body.current.temperature,
-                // feelslike: body.current.feelslike,
-                //type: body.current.weather_descriptions[0]
+                location: body.location.name + ', ' + body.location.region + ', ' + body.location.country,
+                current: 'It is ' + body.current.weather_descriptions[0] + ' now. Current temparature ' + body.current.temperature + ' & it feels like '+ body.current.feelslike + '. Humidity is ' + body.current.humidity + ' with rain % ' + body.current.precip,
+                time: 'Local time ' + body.location.localtime + ' & temprature recording time ' + body.current.observation_time
             })
         }
     })
